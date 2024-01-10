@@ -36,7 +36,15 @@ def getAccountData(data_type: InfoType):
         return data_int
     elif "억" in data_str:
         data_str = data_str.replace("억", "")
-        data_int = int(float(data_str)*100000000)
+        data_int = int(float(data_str) * 100000000)
         return data_int
     else:
         return int(data_str)
+
+
+def getProfileImage():
+    response = driver.find_elements(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="img.xpdipgo"
+    )[1]
+    img_src = response.get_attribute("src")
+    return str(img_src)
