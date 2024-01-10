@@ -9,3 +9,7 @@ driver = webdriver.Chrome(options=chrome_options)
 
 def getHompage():
     driver.get('https://www.instagram.com/')
+
+def getAccountpage(accountId):
+    url = 'https://www.instagram.com/' + str(accountId)
+    driver.get(url)
