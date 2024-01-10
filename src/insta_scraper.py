@@ -48,3 +48,9 @@ def getProfileImage():
     )[1]
     img_src = response.get_attribute("src")
     return str(img_src)
+
+def getAccountName():
+    response = driver.find_elements(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="span.x1lliihq"
+    )[2]
+    return str(response.text)
