@@ -94,3 +94,10 @@ def getNumOfLikes():
         by=webdriver.common.by.By.CSS_SELECTOR, value="span.xdj266r"
     )[3]
     return str(response.text)
+
+
+def getPostedDate():
+    response = driver.find_element(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="time._aaqe"
+    ).get_attribute("title")
+    return str(response)
