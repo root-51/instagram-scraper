@@ -71,19 +71,6 @@ def clickFirstPost():
     response.click()
 
 
-def clickRightButton():
-    response = driver.find_element(
-        by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
-    )
-    response.click()
-
-
-def clickLeftButton():
-    response = driver.find_element(
-        by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
-    )
-
-
 class ButtonDirection(Enum):
     LEFT = 0
     RIGHT = 1
