@@ -87,3 +87,10 @@ def clickButton(button_direction: ButtonDirection):
             by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
         )
     target.click()
+
+
+def getNumOfLikes():
+    response = driver.find_elements(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="span.xdj266r"
+    )[3]
+    return str(response.text)
