@@ -63,8 +63,40 @@ def getAccountIntroduction():
     )
     return str(response.text)
 
+
 def clickFirstPost():
     response = driver.find_elements(
         by=webdriver.common.by.By.CSS_SELECTOR, value="div._aagu"
     )[0]
     response.click()
+
+
+def clickRightButton():
+    response = driver.find_element(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
+    )
+    response.click()
+
+
+def clickLeftButton():
+    response = driver.find_element(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
+    )
+
+
+class ButtonDirection(Enum):
+    LEFT = 0
+    RIGHT = 1
+
+
+def clickButton(button_direction: ButtonDirection):
+    target = None
+    if button_direction.value == 0:
+        target = driver.find_element(
+            by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqf"
+        )
+    elif button_direction.value == 1:
+        target = driver.find_element(
+            by=webdriver.common.by.By.CSS_SELECTOR, value="div._aaqg"
+        )
+    target.click()
