@@ -62,3 +62,9 @@ def getAccountIntroduction():
         by=webdriver.common.by.By.CSS_SELECTOR, value="h1._ap3a"
     )
     return str(response.text)
+
+def clickFirstPost():
+    response = driver.find_elements(
+        by=webdriver.common.by.By.CSS_SELECTOR, value="div._aagu"
+    )[0]
+    response.click()
