@@ -34,9 +34,18 @@ def connectDatabase(database_name: str) -> sql.Connection:
 
 
 def createCursor(conn: sql.Connection) -> sql.Cursor:
-    return conn.cursor
+    return conn.cursor()
 
 
 def finishQuery(conn: sql.Connection) -> None:
     conn.commit()
     conn.close()
+
+
+def getTable(db_name: str, table_name: str) -> list:
+    conn = connectDatabase(db_name)
+    cursor = createCursor(conn)
+    cursor.execute(f"SELECT * FROM {table_name}")
+    data = cursor.fetchall()
+    finishQuery(conn)
+    return data
