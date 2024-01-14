@@ -49,3 +49,10 @@ def getTable(db_name: str, table_name: str) -> list:
     data = cursor.fetchall()
     finishQuery(conn)
     return data
+
+def addRow_Post(post:dict):
+    conn = connectDatabase('test01')
+    cursor = createCursor(conn)
+    query = "INSERT INTO Post_ver_5 (enterprise_name, num_of_likes, published_date, url) VALUES (?, ?, ?, ?);"
+    cursor.execute(query, (post['enterprise_name'], post['num_of_likes'], post['published_date'],post['url']))
+    finishQuery(conn)

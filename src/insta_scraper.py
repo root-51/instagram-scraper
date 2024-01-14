@@ -1,5 +1,6 @@
 from enum import Enum
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
 
@@ -89,11 +90,22 @@ def clickButton(button_direction: ButtonDirection):
     target.click()
 
 
-def getNumOfLikes():
-    response = driver.find_elements(
-        by=webdriver.common.by.By.CSS_SELECTOR, value="span.xdj266r"
-    )[3]
-    return str(response.text)
+def getNumOfLikes() -> str:
+    try:
+        response = driver.find_element(
+            By.XPATH,
+            "/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[2]/div/div",
+        )
+        return str(response.text)
+    except Exception as e:
+        try:
+            response = driver.find_element(
+                By.XPATH,
+                "/html/body/div[8]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[2]/div/div",
+            )
+            return str(response.text)
+        except Exception as e:
+            return "-1"
 
 
 def getPostedDate():
@@ -101,3 +113,10 @@ def getPostedDate():
         by=webdriver.common.by.By.CSS_SELECTOR, value="time._aaqe"
     ).get_attribute("title")
     return str(response)
+
+
+def getPostURL():
+    return driver.current_url
+
+def refreshPage():
+    driver.refresh()
